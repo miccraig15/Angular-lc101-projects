@@ -10,3 +10,7 @@ img {
 .photos {
    text-align: center;
 }
+
+div {
+   border: 5px solid black;
+}
