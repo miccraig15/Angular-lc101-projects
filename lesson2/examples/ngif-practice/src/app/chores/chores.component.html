@@ -1,5 +1,5 @@
-<div class="chores">
-    <h3>Chores</h3>
+<div class="chores" *ngIf = "finishedChores.length >= chores.length; else chastise">
+    <h3>Chores </h3>
     <ul>
         <li *ngFor = 'let chore of chores'>{{chore}}</li>
     </ul>
@@ -10,5 +10,22 @@
     <ul>
         <li *ngFor = 'let done of finishedChores'>{{done}}</li>
     </ul>
+    <p *ngIf = "chores.length = 0 || finishedChores.length >= chores.length + 3; else delayPrize">
+        <img src="{{targetImage}}" alt="target">
+    </p>
 </div>
 <hr>
+
+<ng-template #chastise>
+    <div class="chores">
+        <h3>Chores</h3>
+        <p>"Work harder!"</p>
+        <ul>
+            <li *ngFor = 'let chore of chores'>{{chore}}</li>
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #delayPrize>
+        <p>"No allowance yet."</p>
+</ng-template>
